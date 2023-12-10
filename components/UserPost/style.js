@@ -22,10 +22,15 @@ const style = StyleSheet.create({
   },
   userPostContainer: {
     marginTop: 35,
+    marginHorizontal: 18,
     paddingBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#EFF2F6'
+    borderBottomColor: '#EFF2F6',
   },
+  userPostStatus: {marginLeft: 10, flexDirection: 'row'},
+  userPostStatButton: {flexDirection: 'row'},
+  userPostStatButtonRight: {flexDirection: 'row', marginLeft: 27},
+  userPostStatText: {marginLeft: 3, color: '#79869F'},
 });
 
 export default style;

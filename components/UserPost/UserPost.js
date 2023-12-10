@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import {View, Text, Image} from 'react-native';
 import UserProfileImage from '../UserProfileImage/UserProfileImage';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faEllipsisH, faHeart,faMessage,faBookmark, faBook} from '@fortawesome/free-solid-svg-icons';
+import {
+  faEllipsisH,
+  faHeart,
+  faMessage,
+  faBookmark,
+  faBook,
+} from '@fortawesome/free-solid-svg-icons';
 import style from './style';
 
 const UserPost = props => {
@@ -31,18 +37,22 @@ const UserPost = props => {
       <View style={style.postImage}>
         <Image source={props.image} />
       </View>
-      <View style={{marginLeft: 10,flexDirection:'row'}}>
-        <View style={{flexDirection: 'row'}}>
+      <View style={style.userPostStatus}>
+        <View style={style.userPostStatButton}>
           <FontAwesomeIcon icon={faHeart} color={'#79869F'} />
-          <Text style={{marginLeft: 3, color: '#79869F'}}>{props.likes}</Text>
+          <Text style={style.userPostStatText}>{props.likes}</Text>
         </View>
-        <View style={{flexDirection: 'row',marginLeft:27}}>
+        <View style={style.userPostStatButtonRight}>
           <FontAwesomeIcon icon={faMessage} color={'#79869F'} />
-          <Text style={{marginLeft: 3, color: '#79869F'}}>{props.comments}</Text>
+          <Text style={style.userPostStatText}>
+            {props.comments}
+          </Text>
         </View>
-        <View style={{flexDirection: 'row',marginLeft:27}}>
+        <View style={style.userPostStatButton}>
           <FontAwesomeIcon icon={faBookmark} color={'#79869F'} />
-          <Text style={{marginLeft: 3, color: '#79869F'}}>{props.bookmarks}</Text>
+          <Text style={style.userPostStatText}>
+            {props.bookmarks}
+          </Text>
         </View>
       </View>
     </View>
