@@ -11,6 +11,7 @@ import {
   faBook,
 } from '@fortawesome/free-solid-svg-icons';
 import style from './style';
+import { horizontalScale, scaleFontSize } from '../../assets/styles/scaling';
 
 const UserPost = props => {
   return (
@@ -18,7 +19,7 @@ const UserPost = props => {
       <View style={style.profileContainer}>
         <UserProfileImage
           profileImage={props.profileImage}
-          imageDimensions={48}
+          imageDimensions={horizontalScale(48)}
         />
         <View style={style.userTextContainer}>
           <Text style={style.userName}>
@@ -30,7 +31,7 @@ const UserPost = props => {
         </View>
         <FontAwesomeIcon
           icon={faEllipsisH}
-          size={24}
+          size={scaleFontSize(24)}
           style={style.iconStyles}
         />
       </View>
@@ -48,7 +49,7 @@ const UserPost = props => {
             {props.comments}
           </Text>
         </View>
-        <View style={style.userPostStatButton}>
+        <View style={style.userPostStatButtonRight}>
           <FontAwesomeIcon icon={faBookmark} color={'#79869F'} />
           <Text style={style.userPostStatText}>
             {props.bookmarks}

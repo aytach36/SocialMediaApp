@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  StatusBar
 } from 'react-native';
 import Title from './components/title/Title';
 import UserStory from './components/UserStory/UserStory';
@@ -13,6 +14,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 import globalStyle from './assets/styles/globalStyle';
+import {scaleFontSize} from './assets/styles/scaling';
 
 function App() {
   const userStories = [
@@ -146,10 +148,7 @@ function App() {
     const getInitialData = pagination(userStories, 1, userStoriesPageSize);
     setUserStoriesRenderedData(getInitialData);
     setIsLoadingUserStories(false);
-  }, []);
 
-  // For posts
-  useEffect(() => {
     setIsLoadingUserPosts(true);
     const getInitialDataPosts = pagination(userPosts, 1, userPostsPageSize);
     setUserPostsRenderedData(getInitialDataPosts);
@@ -158,6 +157,7 @@ function App() {
 
   return (
     <SafeAreaView>
+      <StatusBar backgroundColor={'red'} barStyle={'light-content'}/>
       <View>
         <FlatList
           ListHeaderComponent={
@@ -168,7 +168,7 @@ function App() {
                 <TouchableOpacity style={globalStyle.messageIcon}>
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    size={20}
+                    size={scaleFontSize(20)}
                     color={'#898DAE'}
                   />
                   <View style={globalStyle.messageNumberContainer}>
@@ -214,10 +214,10 @@ function App() {
           onEndReached={() => {
             if (isLoadingUserPosts) return;
             setIsLoadingUserPosts(true);
-            console.log('Fetching more data for you')
+            console.log('Fetching more data for you');
             const contentToAppend = pagination(
               userPosts,
-              userPostsCurrentPage+ 1,
+              userPostsCurrentPage + 1,
               userPostsPageSize,
             );
             if (contentToAppend.length > 0) {
