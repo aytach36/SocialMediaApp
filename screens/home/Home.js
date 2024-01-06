@@ -17,7 +17,7 @@ import style from './style';
 import {scaleFontSize} from '../../assets/styles/scaling';
 import globalStyle from '../../assets/styles/globalStyle';
 
-import { Routes } from '../../navigation/Routes';
+import {Routes} from '../../navigation/Routes';
 function Home({navigation}) {
   const userStories = [
     {
@@ -167,11 +167,7 @@ function Home({navigation}) {
               <View style={style.header}>
                 <Title title={'Let’s Explore'} />
 
-                <TouchableOpacity
-                  style={style.messageIcon}
-                  onPress={() => {
-                   navigation.navigate(Routes.Profile)
-                  }}>
+                <TouchableOpacity style={style.messageIcon}>
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     size={scaleFontSize(20)}
@@ -186,7 +182,9 @@ function Home({navigation}) {
                 <FlatList
                   onEndReachedThreshold={0.5}
                   onEndReached={() => {
-                    if (isLoadingUserStories) return;
+                    if (isLoadingUserStories) {
+                      return;
+                    }
                     setIsLoadingUserStories(true);
                     const contentToAppend = pagination(
                       userStories,
@@ -218,7 +216,9 @@ function Home({navigation}) {
           }
           onEndReachedThreshold={0.5}
           onEndReached={() => {
-            if (isLoadingUserPosts) return;
+            if (isLoadingUserPosts) {
+              return;
+            }
             setIsLoadingUserPosts(true);
             console.log('Fetching more data for you');
             const contentToAppend = pagination(
